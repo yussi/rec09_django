@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}ラジオを楽しむ{% endblock %}
+
+{% block contents %}
+  <section class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1 id="typography">番組情報詳細</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headings -->
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="bs-component">
+          <h3>
+            {{ object.prog_title }}
+          </h3>
+	  <audio src="{{ object.prog_file.url }}" controls></audio>
+
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="bs-component">
+          <h2>番組情報</h2>
+	  <p>パーソナリティ：{{ object.prog_pfm }}</p>
+	  <p>放送局：{{ object.prog_channel }}</p>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  
+{% endblock %}

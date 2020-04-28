@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView, TemplateView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 from .models import Recfile
 
 # Create your views here.
@@ -12,3 +12,7 @@ class RadikoListView(ListView):
 
     def queryset(self):
         return Recfile.objects.all()
+
+class RadikoDetailView(DetailView):
+    model = Recfile
+    template_name = "detail.html"
