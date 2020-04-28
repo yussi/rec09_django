@@ -2,3 +2,4 @@ rec09/settings_local.py
 db.sqlite3
 *.pyc
 *.pyo
+/media
