@@ -1,0 +1,68 @@
+{% load static %}
+<html lang="ja">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+  {% block head %}{% endblock %}
+
+</head>
+
+<body>
+
+        <div class="bs-component">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">rec09</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'recfile:index' %}">トップ</a>
+                </li>
+		<li class="nav-item">
+                  <a class="nav-link" href="#">番組表</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'recfile:list' %}">録音済み</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">設定</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">録音済みファイルを検索</button>
+              </form>
+            </div>
+          </nav>
+        </div>
+
+  <div class="container">
+	
+  {% block header %}{% endblock %}
+
+  {% block contents %}{% endblock %}
+
+  </div>
+
+  
+  <!-- Footer -->
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">copyright by yussi</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>
