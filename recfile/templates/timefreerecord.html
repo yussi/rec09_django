@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}ラジオを楽しむ{% endblock %}
+
+{% block contents %}
+  <section class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="my-4">
+          <h2>タイムフリー録音(手動)</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headings -->
+
+    <div class="row">
+
+      <form action="{% url 'recfile:rec_timefree_confirm' %}" method="POST">
+	{{ form.as_p }}
+	{% csrf_token  %}
+	<button type ="submit">送信</button>
+      </form>
+    </div>
+
+  </section>
+
+  
+{% endblock %}

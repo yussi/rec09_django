@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}ラジオを楽しむ{% endblock %}
+
+{% block contents %}
+  <section class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="my-4">
+          <h2>タイムフリー録音(手動)</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headings -->
+
+    <div class="row">
+    <div class="col-lg-4">
+    <div class="card mb-3">
+      <div class="card-header">入力された情報</div>
+        <div class="card-body">
+	<ul>
+	  {% for field in form  %}
+	  <li>{{ field.label_tag }}：{{ field.value }}</li>
+	  {% endfor %}
+	</ul>
+	
+	</div>
+	</div>
+	</div>
+
+    <div class="col-lg-8">
+    <div class="card mb-3">
+      <div class="card-header">番組情報</div>
+        <div class="card-body">
+	  <ul>
+	    <li>番組タイトル：{{ prog.title }}</li>
+	    <li>パーソナリティ：{{ prog.pfm }}</li>
+	    <li>放送局：{{ prog.channel }}</li>
+	    <li>番組ID：{{ prog.id }}</li>
+	    <li>放送開始時刻：{{ prog.ft }}</li>
+	    <li>放送終了時刻：{{ prog.to }}</li>
+	    <li>番組URL：{{ prog.url }}</li>
+	  </ul>
+	  <img src="{{ prog.img }}">
+	  <p>{{ prog.desc }} {{ prog.info }}</p>
+
+	<p>上記番組を録音します。よろしいですか？</p>
+	<form action="{% url 'recfile:rec_timefree_confirm' %}" method="POST">
+        <button type="submit" class="btn btn-primary btn-lg">確認</button>
+        {% for field in form %}{{ field.as_hidden }}{% endfor %}
+        {% csrf_token %}
+	</form>
+	  
+	</div>
+
+    </div>
+    </div>
+    </div>
+
+  </section>
+
+  
+{% endblock %}

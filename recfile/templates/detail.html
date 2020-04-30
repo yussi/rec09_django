@@ -8,8 +8,8 @@
   <section class="bs-docs-section">
     <div class="row">
       <div class="col-lg-12">
-        <div class="page-header">
-          <h1 id="typography">番組情報詳細</h1>
+        <div class="my-4">
+          <h2>番組情報詳細</h2>
         </div>
       </div>
     </div>
@@ -17,21 +17,28 @@
     <!-- Headings -->
 
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-4">
         <div class="bs-component">
-          <h3>
-            {{ object.prog_title }}
-          </h3>
+          <h3>{{ object.prog_title }}</h3>
 	  <audio src="{{ object.prog_file.url }}" controls></audio>
 
         </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-8">
         <div class="bs-component">
-          <h2>番組情報</h2>
-	  <p>パーソナリティ：{{ object.prog_pfm }}</p>
-	  <p>放送局：{{ object.prog_channel }}</p>
+	    <div class="card mb-3">
+            <div class="card-header">番組情報</div>
+            <div class="card-body">
+              <h4 class="card-title">{{ object.prog_title }}</h4>
+	    <ul>
+	      <li>パーソナリティ：{{ object.prog_pfm }}</li>
+	      <li>放送局：{{ object.prog_channel }}</li>
+	      <li>放送日時：{{ object.prog_ft }}</li>
+	   </ul>
+            </div>
+          </div>
+
         </div>
 
       </div>

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+  <header class="sticky-top">
         <div class="bs-component">
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">rec09</a>
@@ -32,6 +32,9 @@
 		<li class="nav-item">
                   <a class="nav-link" href="#">番組表</a>
                 </li>
+		<li class="nav-item">
+                  <a class="nav-link" href="{% url 'recfile:rec_timefree' %}">手動録音(タイムフリー)</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'recfile:list' %}">録音済み</a>
                 </li>
@@ -46,7 +49,8 @@
             </div>
           </nav>
         </div>
-
+  </header>
+  
   <div class="container">
 	
   {% block header %}{% endblock %}
@@ -57,7 +61,7 @@
 
   
   <!-- Footer -->
-  <footer class="footer mt-auto py-3 bg-light">
+  <footer class="footer mt-auto py-3 bg-light fixed-bottom">
     <div class="container">
       <span class="text-muted">copyright by yussi</span>
     </div>
