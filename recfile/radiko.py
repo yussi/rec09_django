@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 import datetime
 import configparser
 import sys
+from django.conf import settings
+import os
 
 class Radiko:
     def get_program_by_channel(self, channel, rec_time):
@@ -182,6 +184,34 @@ class Radiko:
         print(command)
         p1 = subprocess.run(command, shell=True)
         return None
+
+    def record_timefree_rec09(self, channel, start, end):
+        # m3u8プレイリスト, AuthTokenを取得する
+        m3u8, AuthToken = self.get_m3u8_authtoken(channel)
+        # 録音する番組のデータを取得する
+        prog_data = self.get_program_by_channel(channel, start)
+        print('録画する放送局は%s、番組名は%sです' % (prog_data['channel'], prog_data['title']))
+        # ファイル名を決める
+        output = "{}_{}.m4a".format(prog_data['ft'].strftime('%Y-%m-%d_%H-%M-%S'), channel)
+        output_fullpath = os.path.join(settings.MEDIA_ROOT, output)
+        print('録音ファイル名は、%sです' % output_fullpath)
+        title = prog_data['ft'].strftime('%Y-%m-%d') + "放送_" + prog_data['title'] 
+
+        # ffmpegで録音する
+        command = ['ffmpeg',
+                   '-headers', 'X-Radiko-AuthToken: {}'.format(AuthToken),
+                   '-i', 'https://radiko.jp/v2/api/ts/playlist.m3u8?station_id={}&l=15&ft={}&to={}'.format(channel, datetime.datetime.strftime(start, '%Y%m%d%H%M%S'), datetime.datetime.strftime(end,  '%Y%m%d%H%M%S')),
+                   '-metadata', 'title="{}"'.format(title),
+                   '-metadata', 'artist="{}"'.format(prog_data['pfm']),
+                   '-metadata', 'album="{}"'.format(prog_data['title']),
+                   '-bsf:a', 'aac_adtstoasc',
+                   '-acodec', 'copy',
+                   '-f', 'ipod',
+                   output_fullpath,
+        ]
+        print(command)
+        p1 = subprocess.run(command, stdout=subprocess.PIPE)
+        return output, prog_data
 
     
 if __name__ == '__main__':

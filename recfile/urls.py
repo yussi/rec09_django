@@ -9,4 +9,5 @@ urlpatterns = [
     path('detail/<int:pk>', views.RadikoDetailView.as_view(), name="detail"),
     path('rec_timefree/', views.TimeFreeRecordFormView.as_view(), name="rec_timefree"),
     path('rec_timefree_confirm/', views.TimeFreeRecordForm_Confirm.as_view(), name="rec_timefree_confirm"),
+    path('rec_timefree_create/', views.TimeFreeRecore_Create.as_view(), name="rec_timefree_create"),
     ]

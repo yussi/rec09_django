@@ -48,7 +48,7 @@
 	  <p>{{ prog.desc }} {{ prog.info }}</p>
 
 	<p>上記番組を録音します。よろしいですか？</p>
-	<form action="{% url 'recfile:rec_timefree_confirm' %}" method="POST">
+	<form action="{% url 'recfile:rec_timefree_create' %}" method="POST">
         <button type="submit" class="btn btn-primary btn-lg">確認</button>
         {% for field in form %}{{ field.as_hidden }}{% endfor %}
         {% csrf_token %}
