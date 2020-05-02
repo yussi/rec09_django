@@ -50,7 +50,7 @@ class TimeFreeRecore_Create(FormView):
             prog_info = prog_data['info'],
             prog_pfm = prog_data['pfm'],
             prog_img = prog_data['img'],
-            prog_hastag = prog_data['hashtag'],
+            prog_hashtag = prog_data['hashtag'],
             prog_file = radiko_file
         )
         

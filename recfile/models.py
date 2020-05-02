@@ -14,12 +14,12 @@ class Recfile(models.Model):
     prog_ft = models.DateTimeField("放送開始日時")
     prog_to = models.DateTimeField("放送終了日時")
     prog_dur = models.IntegerField("放送時間")
-    prog_url = models.CharField("番組URL", blank=True, max_length=255)
-    prog_desc = models.TextField("description", blank=True)
-    prog_info = models.TextField("information", blank=True)
-    prog_pfm = models.CharField("パーソナリティ", blank=True, max_length=100)
-    prog_img = models.CharField("画像URL", blank=True, max_length=255)
-    prog_hastag = models.CharField("Twitterハッシュタグ", blank=True, max_length=255)
+    prog_url = models.CharField("番組URL", blank=True, null=True,  max_length=255)
+    prog_desc = models.TextField("description", blank=True, null=True)
+    prog_info = models.TextField("information", blank=True, null=True)
+    prog_pfm = models.CharField("パーソナリティ", blank=True, null=True, max_length=100)
+    prog_img = models.CharField("画像URL", blank=True, null=True, max_length=255)
+    prog_hashtag = models.CharField("Twitterハッシュタグ", blank=True, null=True, max_length=255)
     prog_file = models.FileField(validators=[FileExtensionValidator(allowed_extensions=['m4a'])])
 
     def __str__(self):

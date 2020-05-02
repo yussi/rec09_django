@@ -1,6 +1,22 @@
-<h1>録音終了</h1>
-	<ul>
-	  {% for field in form  %}
-	  <li>{{ field.label_tag }}：{{ field.value }}</li>
-	  {% endfor %}
-	</ul>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}ラジオを楽しむ{% endblock %}
+
+{% block contents %}
+  <section class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="my-4">
+          <h2>録音終了しました</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headings -->
+
+  </section>
+
+  
+{% endblock %}
